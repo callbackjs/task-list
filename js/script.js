@@ -1,5 +1,5 @@
 (function(window, document, undefined) {
 
-   // enter your JavaScript here. 
+  // TODO: task list code
 
 })(this, this.document);
