@@ -22,7 +22,7 @@
     if (taskInput.value)  {
       var li = document.createElement('li');
       li.textContent = taskInput.value;
-      li.innerHTML += " <a href=\"#\" class=\"delete\">&#215;</a> <a href=\"#\" class=\"check\">&#9744;</a>";
+      li.innerHTML += " <a href=\"#\" class=\"delete\"></a> <a href=\"#\" class=\"check\"></a>";
 
       addTaskListeners(li);
       taskInput.value = "";
@@ -42,10 +42,8 @@
 
       if (li.classList.contains('checked')) {
         li.classList.remove('checked');
-        checkbox.innerHTML = '&#9744;';
       } else {
         li.classList.add('checked');
-        checkbox.innerHTML = '&#9745;';
       }
     });
 
