@@ -33,10 +33,8 @@ taskList.addEventListener('click', function(event) {
     event.preventDefault();
     if (li.classList.contains('checked')) {
       li.classList.remove('checked');
-      target.innerHTML = '&#9744;';
     } else {
       li.classList.add('checked');
-      target.innerHTML = '&#9745;';
     }
 
     localStorage.tasks = taskList.innerHTML;
@@ -51,8 +49,8 @@ taskList.addEventListener('click', function(event) {
 function renderTaskTemplate(task) {
   var taskItem = tag('li', [
     task,
-    tag('a', {class: "delete"}, "&#215;"),
-    tag('a', {class: "check"}, "&#9744;")
+    tag('a', {class: "delete", href: "#"}, []),
+    tag('a', {class: "check", href: "#"}, [])
   ]);
   return taskItem;
 }
