@@ -88,15 +88,26 @@ p {
   font-weight: bold;
   text-decoration: none;
   color: #444;
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
+}
+
+.delete {
+  background-image: url("../images/x-button.png");
+}
+
+.check {
+  margin-right: 20px;
+  background-image: url("../images/unchecked-checkbox.png");
+}
+
+.checked .check {
+  background-image: url("../images/checked-checkbox.png");
 }
 
 .checked {
   text-decoration: line-through;
-}
-
-.check {
-  font-size: 16px;
-  margin-right: 7px;
 }
 
 /* Micro clearfix, courtesy of http://nicolasgallagher.com/micro-clearfix-hack/ */
