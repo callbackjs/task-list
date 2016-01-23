@@ -47,7 +47,7 @@ taskList.addEventListener('click', function(event) {
 
 // Renders a task with the given text in the #task-list div.
 function renderTaskTemplate(task) {
-  var taskItem = tag('li', [
+  var taskItem = tag('li', {}, [
     task,
     tag('a', {class: "delete", href: "#"}, []),
     tag('a', {class: "check", href: "#"}, [])
@@ -60,18 +60,16 @@ function renderTaskTemplate(task) {
  * set on the tag. contents is an array of strings/HTMLElements (or just a single
  * string/HTMLElement) that will be contained within the tag.
  *
- * Note that attrs is an optional parameter, and can be ommitted.
- *
  * Examples:
- * tag('p', 'A simple paragraph') => <p>A simple paragraph</p>
+ * tag('p', {}, 'A simple paragraph') => <p>A simple paragraph</p>
  * tag('a', {href: '/about'}, 'About') => <a href="/about">About</a>
  *
- * tag('ul', tag('li', 'First item')) => <ul><li>First item</li></ul>
+ * tag('ul', {}, tag('li', {}, 'First item')) => <ul><li>First item</li></ul>
  *
- * tag('div', [
+ * tag('div', {}, [
  *   tag('h1', {'class': 'headline'}, 'JavaScript'),
  *   ' is awesome, ',
- *   tag('span', "especially in CS42.")
+ *   tag('span', {}, 'especially in CS42.')
  * ])
  * => <div>
  *      <h1 class="headline">JavaScript</h1>
@@ -80,12 +78,6 @@ function renderTaskTemplate(task) {
  *    </div>
  */
 function tag(name, attrs, contents) {
-  // attrs is optional
-  if (!contents) {
-    contents = attrs;
-    attrs = [];
-  }
-
   var element = document.createElement(name);
   for (var attr in attrs) {
     element.setAttribute(attr, attrs[attr]);
