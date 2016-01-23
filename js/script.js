@@ -14,7 +14,7 @@ taskInput.addEventListener("keydown", function(event) {
   }
 });
 
-// Adds a new task item to the list with the value of `taskInput`
+/* Adds a new task item to the list. */
 function addTaskToList() {
   if (taskInput.value) {
     var li = renderTaskTemplate(taskInput.value);
@@ -45,20 +45,19 @@ taskList.addEventListener('click', function(event) {
   }
 });
 
-// Renders a task with the given text in the #task-list div.
+/* Creates an HTMLElement containing a task with the given text. */
 function renderTaskTemplate(task) {
-  var taskItem = tag('li', {}, [
+  return tag('li', {}, [
     task,
     tag('a', {class: "delete", href: "#"}, []),
     tag('a', {class: "check", href: "#"}, [])
   ]);
-  return taskItem;
 }
 
 /* Creates and returns an HTMLElement representing a tag of the given name.
  * attrs is an object, where the key-value pairs represent HTML attributes to
- * set on the tag. contents is an array of strings/HTMLElements (or just a single
- * string/HTMLElement) that will be contained within the tag.
+ * set on the tag. contents is an array of strings/HTMLElements (or just
+ * a single string/HTMLElement) that will be contained within the tag.
  *
  * Examples:
  * tag('p', {}, 'A simple paragraph') => <p>A simple paragraph</p>
