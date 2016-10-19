@@ -1,49 +1,49 @@
-var ENTER_KEY_CODE = 13;
+const ENTER_KEY_CODE = 13
 
-var taskInput = document.getElementById('task');
-var taskList = document.getElementById('task-list');
+const taskInput = document.getElementById('task')
+const taskList = document.getElementById('task-list')
 
 if (localStorage.tasks) {
-  taskList.innerHTML = localStorage.tasks;
+  taskList.innerHTML = localStorage.tasks
 }
 
-taskInput.addEventListener("keydown", function(event) {
+taskInput.addEventListener("keydown", event => {
   if (event.keyCode === ENTER_KEY_CODE) {
-    event.preventDefault();
-    addTaskToList();
+    event.preventDefault()
+    addTaskToList()
   }
-});
+})
 
 /* Adds a new task item to the list. */
 function addTaskToList() {
   if (taskInput.value) {
-    var li = renderTaskTemplate(taskInput.value);
+    const li = renderTaskTemplate(taskInput.value)
 
-    taskInput.value = "";
-    taskList.appendChild(li);
-    localStorage.tasks = taskList.innerHTML;
+    taskInput.value = ""
+    taskList.appendChild(li)
+    localStorage.tasks = taskList.innerHTML
   }
 }
 
-taskList.addEventListener('click', function(event) {
-  var target = event.target;
-  var li = target.parentNode;
+taskList.addEventListener('click', event => {
+  const target = event.target
+  const li = target.parentNode
 
   if (target.classList.contains('check')) {
-    event.preventDefault();
+    event.preventDefault()
     if (li.classList.contains('checked')) {
-      li.classList.remove('checked');
+      li.classList.remove('checked')
     } else {
-      li.classList.add('checked');
+      li.classList.add('checked')
     }
 
-    localStorage.tasks = taskList.innerHTML;
+    localStorage.tasks = taskList.innerHTML
   } else if (target.classList.contains("delete")) {
-    event.preventDefault();
-    li.parentNode.removeChild(li);
-    localStorage.tasks = taskList.innerHTML;
+    event.preventDefault()
+    li.parentNode.removeChild(li)
+    localStorage.tasks = taskList.innerHTML
   }
-});
+})
 
 /* Creates an HTMLElement containing a task with the given text. */
 function renderTaskTemplate(task) {
@@ -51,7 +51,7 @@ function renderTaskTemplate(task) {
     task,
     tag('a', {class: "delete", href: "#"}, []),
     tag('a', {class: "check", href: "#"}, [])
-  ]);
+  ])
 }
 
 /* Creates and returns an HTMLElement representing a tag of the given name.
@@ -77,25 +77,25 @@ function renderTaskTemplate(task) {
  *    </div>
  */
 function tag(name, attrs, contents) {
-  var element = document.createElement(name);
-  for (var attr in attrs) {
-    element.setAttribute(attr, attrs[attr]);
+  const element = document.createElement(name)
+  for (const name in attrs) {
+    element.setAttribute(name, attrs[name])
   }
 
   // If contents is a single string or HTMLElement, make it an array of one
-  // element; this guarantees that contents is an array below.
+  // element this guarantees that contents is an array below.
   if (!(contents instanceof Array)) {
-    contents = [contents];
+    contents = [contents]
   }
 
-  contents.forEach(function(piece) {
+  contents.forEach(piece => {
     if (piece instanceof HTMLElement) {
-      element.appendChild(piece);
+      element.appendChild(piece)
     } else {
       // must create a text node for a raw string
-      element.appendChild(document.createTextNode(piece));
+      element.appendChild(document.createTextNode(piece))
     }
-  });
+  })
 
-  return element;
+  return element
 }
