@@ -49,8 +49,8 @@ taskList.addEventListener('click', event => {
 function renderTaskTemplate(task) {
   return tag('li', {}, [
     task,
-    tag('a', {class: "delete", href: "#"}, []),
-    tag('a', {class: "check", href: "#"}, [])
+    tag('span', {class: "delete"}, []),
+    tag('span', {class: "check"}, [])
   ])
 }
 
