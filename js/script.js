@@ -35,19 +35,12 @@ function addTaskToList() {
  */
 function addTaskListeners(li) {
   const checkbox = li.querySelector('.check')
-  checkbox.addEventListener('click', event => {
-    event.preventDefault()
-
-    if (li.classList.contains('checked')) {
-      li.classList.remove('checked')
-    } else {
-      li.classList.add('checked')
-    }
+  checkbox.addEventListener('click', () => {
+    li.classList.toggle('checked')
   })
 
   const deleteButton = li.querySelector('.delete')
-  deleteButton.addEventListener('click', event => {
-    event.preventDefault()
+  deleteButton.addEventListener('click', () => {
     li.parentNode.removeChild(li)
   })
 }
