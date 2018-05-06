@@ -39,11 +39,9 @@ taskList.addEventListener('click', event => {
   // Parent of the .check and .delete buttons is the list item
   const li = target.parentNode
   if (target.classList.contains('check')) {
-    event.preventDefault()
     li.classList.toggle('checked')
     localStorage.tasks = taskList.innerHTML
   } else if (target.classList.contains("delete")) {
-    event.preventDefault()
     li.parentNode.removeChild(li)
     localStorage.tasks = taskList.innerHTML
   }
