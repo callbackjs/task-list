@@ -26,17 +26,21 @@ function addTaskToList() {
 }
 
 taskList.addEventListener('click', event => {
-  const target = event.target
-  const li = target.parentNode
+  let target = event.target
+  while (target !== taskList && !target.classList.contains('check') 
+    && !target.classList.contains('delete')) {
+    target = target.parentNode
+  }
 
+  if (target === taskList) {
+    return
+  }
+
+  // Parent of the .check and .delete buttons is the list item
+  const li = target.parentNode
   if (target.classList.contains('check')) {
     event.preventDefault()
-    if (li.classList.contains('checked')) {
-      li.classList.remove('checked')
-    } else {
-      li.classList.add('checked')
-    }
-
+    li.classList.toggle('checked')
     localStorage.tasks = taskList.innerHTML
   } else if (target.classList.contains("delete")) {
     event.preventDefault()
