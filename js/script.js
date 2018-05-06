@@ -20,7 +20,7 @@ function addTaskToList() {
   if (taskInput.value)  {
     const li = document.createElement('li')
     li.textContent = taskInput.value
-    li.innerHTML += " <a href=\"#\" class=\"delete\"></a> <a href=\"#\" class=\"check\"></a>"
+    li.innerHTML += " <span class=\"delete\"></span> <span class=\"check\"></span>"
 
     addTaskListeners(li)
     taskInput.value = ""

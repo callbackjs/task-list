@@ -92,6 +92,7 @@ p {
   height: 15px;
   margin-top: 5px;
   background-size: 15px;
+  cursor: pointer;
 }
 
 .delete {
